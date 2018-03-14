@@ -2,8 +2,8 @@
 This module lets you practice DEBUGGING when RUN-TIME EXCEPTIONS occur.
 
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Noelle Hale.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -80,6 +80,7 @@ import rosegraphics as rg
 #
 ########################################################################
 
+
 def main():
     """ Calls the   TEST   functions in this module. """
     run_test_all()
@@ -153,7 +154,7 @@ def run_test_all():
 
 
 # ----------------------------------------------------------------------
-# TODO: 3. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
+# DONE: 3. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
 #          to correct the mistake(s) in the following function.
 # ----------------------------------------------------------------------
 def broken_1(circle, window):
@@ -173,13 +174,13 @@ def broken_1(circle, window):
       :type window: rg.RoseWindow
     """
     circle.attach_to(window)
-    circle2 = rg.Circle(circle.radius * 2)
+    circle2 = rg.Circle(circle.center, circle.radius * 2)
     circle2.attach_to(window)
     window.render()
 
 
 # ----------------------------------------------------------------------
-# TODO: 4. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
+# DONE: 4. Follow the INSTRUCTIONS AT THE TOP OF THIS MODULE
 #          to correct the mistake(s) in the following function.
 # ----------------------------------------------------------------------
 def broken_2(x, y, window):
@@ -197,7 +198,7 @@ def broken_2(x, y, window):
       :type y:      int
       :type window: rg.RoseWindow
       """
-    circle = rg.Circle((x, y), 33)
+    circle = rg.Circle(rg.Point(x, y), 33)
     circle.attach_to(window)
     window.render()
 
@@ -230,14 +231,15 @@ def broken_3(n, point, length, distance_between_lines, window):
       :type distance_between_lines: int
       :type window:                 rg.RoseWindow
     """
-    a = rg.Point(point.x, point.y)
-    b = rg.Point(point.x, point.y + length)
+    start = rg.Point(point.x, point.y)
+    end = rg.Point(point.x, point.y + length)
 
     for _ in range(n):
-        line = rg.Line(a, b)
+        line = rg.Line(start, end)
         line.attach_to(window)
         window.render(0.5)
-        b = b + distance_between_lines
+        start.x = start.x + distance_between_lines
+        end.x = end.x + distance_between_lines
 
 
 # ----------------------------------------------------------------------
